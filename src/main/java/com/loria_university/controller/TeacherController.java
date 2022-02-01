@@ -99,6 +99,4 @@ public class TeacherController {
         return "students/students";
     }
 
-
-
 }

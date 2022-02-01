@@ -44,7 +44,4 @@ public class FacultyController {
         model.addAttribute("students", students);
         return "students/students";
     }
-
-
-
 }

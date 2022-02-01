@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -64,6 +63,5 @@ public class TeacherDAOImplementation implements TeacherDAO {
             teacher.removeStudentOfTeacher(session.get(Student.class, studentId));
         }
     }
-
 
 }

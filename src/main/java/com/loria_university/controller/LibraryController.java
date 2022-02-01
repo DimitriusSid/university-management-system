@@ -27,7 +27,6 @@ public class LibraryController {
         return "library/books";
     }
 
-
     @GetMapping("/addNewBook")
     public String addNewBook(Model model) {
         model.addAttribute("book", new Book());
@@ -58,6 +57,4 @@ public class LibraryController {
         model.addAttribute("students", libraryService.getBook(id).getStudents());
         return "students/students";
     }
-
-
 }

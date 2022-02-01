@@ -1,7 +1,6 @@
 package com.loria_university.dao.studentDAO;
 
 import com.loria_university.entity.Student;
-import com.loria_university.entity.Teacher;
 
 import java.util.List;
 

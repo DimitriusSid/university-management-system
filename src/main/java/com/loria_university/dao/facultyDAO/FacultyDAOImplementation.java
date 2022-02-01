@@ -38,5 +38,4 @@ public class FacultyDAOImplementation implements FacultyDAO {
         return session.createQuery("FROM Student where faculty_id = :facultyId", Student.class).setParameter("facultyId", facultyId).getResultList();
     }
 
-
 }
