@@ -4,6 +4,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.TransactionManager;
@@ -13,11 +14,17 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 @Configuration
 @ComponentScan("com.loria_university")
 @EnableWebMvc
+@EnableAspectJAutoProxy
 @EnableTransactionManagement
 public class AppConfig {
 
@@ -60,6 +67,30 @@ public class AppConfig {
         HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
         hibernateTransactionManager.setSessionFactory(localSessionFactoryBean().getObject());
         return hibernateTransactionManager;
+    }
+
+    @Bean
+    public SimpleFormatter simpleFormatter() {
+        return new SimpleFormatter();
+    }
+
+    @Bean
+    public Handler handler() {
+        Handler handler = null;
+        try {
+            handler = new FileHandler("C:/Users/user/IdeaProjects/loria_university/app_log.log", true);
+            handler.setFormatter(simpleFormatter());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return handler;
+    }
+
+    @Bean
+    Logger logger() {
+        Logger logger = Logger.getLogger(this.getClass().getName());
+        logger.addHandler(handler());
+        return logger;
     }
 
 

@@ -32,8 +32,8 @@ public class StudentServiceImplementation implements StudentService{
 
     @Override
     @Transactional
-    public void saveStudent(Student student, int id) {
-        studentDAO.saveStudent(student, id);
+    public void saveStudent(Student student, int facultyId) {
+        studentDAO.saveStudent(student, facultyId);
     }
 
     @Override
@@ -41,4 +41,30 @@ public class StudentServiceImplementation implements StudentService{
     public void expelStudent(int id) {
         studentDAO.expelStudent(id);
     }
+
+    @Override
+    @Transactional
+    public void addTeachersToStudent(int studentId, int[] teachersId) {
+        studentDAO.addTeachersToStudent(studentId, teachersId);
+    }
+
+    @Override
+    @Transactional
+    public void removeTeachersOfStudent(int studentId, int[] teachersId) {
+        studentDAO.removeTeachersOfStudent(studentId, teachersId);
+    }
+
+    @Override
+    @Transactional
+    public void addBooksToStudent(int studentId, int[] booksId) {
+        studentDAO.addBooksToStudent(studentId, booksId);
+    }
+
+    @Override
+    @Transactional
+    public void returnBooksOfStudent(int studentId, int[] booksId) {
+        studentDAO.returnBooksOfStudent(studentId, booksId);
+    }
+
+
 }

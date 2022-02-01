@@ -1,6 +1,10 @@
 package com.loria_university.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +18,28 @@ public class Teacher {
     private int id;
 
     @Column(name = "name")
+    @NotBlank(message = "This field could not be empty")
+    @Size(min = 2, message = "Name must contain min 2 symbols")
     private String name;
 
     @Column(name = "subject")
+    @NotBlank(message = "This field could not be empty")
+    @Size(min = 2, message = "Subject name must contain min 2 symbols")
     private String subject;
 
     @Column(name = "salary")
+    @Min(value = 1, message = "Salary must be greater than 1")
     private int salary;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @Column(name = "phone_number")
+    @Pattern(regexp = "\\+\\d{3}-\\d{2}-\\d{3}-\\d{2}-\\d{2}", message = "Phone number must look like: +XXX-XX-XXX-XX-XX")
+    private String phoneNumber;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinTable(name = "teacher_student",
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
@@ -35,10 +48,11 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(String name, String subject, int salary) {
+    public Teacher(String name, String subject, int salary, String phoneNumber) {
         this.name = name;
         this.subject = subject;
         this.salary = salary;
+        this.phoneNumber = phoneNumber;
     }
 
     public void addStudentToTeacher(Student student) {
@@ -46,6 +60,10 @@ public class Teacher {
             students = new ArrayList<>();
         }
         students.add(student);
+    }
+
+    public void removeStudentOfTeacher(Student student) {
+        students.remove(student);
     }
 
     public int getId() {
@@ -96,6 +114,14 @@ public class Teacher {
         this.students = students;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public String toString() {
         return "Teacher{" +
@@ -103,6 +129,7 @@ public class Teacher {
                 ", name='" + name + '\'' +
                 ", subject='" + subject + '\'' +
                 ", salary=" + salary +
+                ", phoneNumber=" + phoneNumber +
                 '}';
     }
 }
