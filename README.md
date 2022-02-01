@@ -5,7 +5,7 @@ The system contains information about faculties, teachers, students and the univ
 ##
 
 ### What was used:
-1. Spring MVC as a design pattern
+1. Spring MVC as a design pattern (CRUD operations)
 2. Maven for adding dependencies
 3. Hibernate to connect the application with databases
 4. PostgreSQL as a database
