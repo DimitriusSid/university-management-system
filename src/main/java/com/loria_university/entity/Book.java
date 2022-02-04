@@ -1,5 +1,8 @@
 package com.loria_university.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -11,6 +14,9 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "books")
 public class Book {
@@ -42,15 +48,6 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> students;
 
-    public Book() {
-    }
-
-    public Book(String authorName, String title, int year) {
-        this.authorName = authorName;
-        this.title = title;
-        this.year = year;
-    }
-
     public void addStudentToBook(Student student) {
         if (students == null) {
             students = new ArrayList<>();
@@ -62,53 +59,4 @@ public class Book {
         students.remove(student);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", authorName='" + authorName + '\'' +
-                ", title='" + title + '\'' +
-                ", year=" + year +
-                '}';
-    }
 }
