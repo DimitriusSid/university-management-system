@@ -40,10 +40,10 @@ public class AppConfig {
     public DataSource dataSource() {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         try {
-            comboPooledDataSource.setDriverClass("org.postgresql.Driver");
-            comboPooledDataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/loria_university?useSSL=false");
-            comboPooledDataSource.setUser("postgres");
-            comboPooledDataSource.setPassword("postgre");
+            comboPooledDataSource.setDriverClass("db.driver");
+            comboPooledDataSource.setJdbcUrl("db.url");
+            comboPooledDataSource.setUser("db.username");
+            comboPooledDataSource.setPassword("db.password");
         } catch (PropertyVetoException e) {
             e.printStackTrace();
         }
