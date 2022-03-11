@@ -6,7 +6,7 @@
     <title>Remove students of teacher</title>
 </head>
 <body>
-    <h3>Remove students of teacher ${teacher.name} of the ${teacher.faculty.facultyName} faculty</h3>
+    <h3>Remove students of teacher ${teacher.teacherPersonalInfo.name} of the ${teacher.faculty.facultyName} faculty</h3>
     <form:form method="post" action="removeStudentsOfTeacher" modelAttribute="students">
         <c:forEach var="student" items="${students}">
         <input type="hidden" name="teacher_id" value="${teacher.id}">

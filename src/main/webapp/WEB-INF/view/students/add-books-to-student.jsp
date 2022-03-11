@@ -7,7 +7,7 @@
     <title>Add books for student</title>
 </head>
 <body>
-    <h3>Add books for student ${student.name}</h3>
+    <h3>Add books for student ${student.studentPersonalInfo.name}</h3>
     <form:form method="post" action="addBooksToStudent" modelAttribute="books">
 
         <c:forEach var="book" items="${books}">

@@ -12,20 +12,20 @@
         <form:hidden path="id"/>
 
         <p>
-            Name <form:input path="name"/>
-            <form:errors path="name"/>
+            Name <form:input path="studentPersonalInfo.name"/>
+            <form:errors path="studentPersonalInfo.name"/>
         </p>
         <p>
             Course <form:input path="course"/>
             <form:errors path="course"/>
         </p>
         <p>
-            Phone number <form:input path="phoneNumber"/>
-            <form:errors path="phoneNumber"/>
+            Phone number <form:input path="studentPersonalInfo.phoneNumber"/>
+            <form:errors path="studentPersonalInfo.phoneNumber"/>
         </p>
         <p>
-            University email <form:input path="email"/>
-            <form:errors path="email"/>
+            University email <form:input path="studentPersonalInfo.email"/>
+            <form:errors path="studentPersonalInfo.email"/>
         </p>
 
         <label for="select">Faculty</label>

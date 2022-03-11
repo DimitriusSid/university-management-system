@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Remove teachers of student ${student.name}</title>
+    <title>Remove teachers of student ${student.studentPersonalInfo.name}</title>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 
         <input type="hidden" name="student_id" value="${student.id}">
         <input name="checkedTeachers" type="checkbox" id="${teacher.id}" value="${teacher.id}">
-        <label for="${teacher.id}">${teacher.name} of the ${teacher.faculty.facultyName} faculty</label>
+        <label for="${teacher.id}">${teacher.teacherPersonalInfo.name} of the ${teacher.faculty.facultyName} faculty</label>
         <br>
 
       </c:forEach>

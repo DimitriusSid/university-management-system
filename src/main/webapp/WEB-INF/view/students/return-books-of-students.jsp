@@ -6,7 +6,7 @@
     <title>Return books of student</title>
 </head>
 <body>
-    <h3>Choose books of student ${student.name} to be returned</h3>
+    <h3>Choose books of student ${student.studentPersonalInfo.name} to be returned</h3>
 
     <form:form method="post" modelAttribute="books" action="returnBooksOfStudent">
 

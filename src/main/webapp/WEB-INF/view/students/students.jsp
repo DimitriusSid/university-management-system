@@ -53,10 +53,10 @@
             </c:url>
 
             <tr>
-                <td>${student.name}</td>
+                <td>${student.studentPersonalInfo.name}</td>
                 <td>${student.course}</td>
-                <td>${student.phoneNumber}</td>
-                <td>${student.email}</td>
+                <td>${student.studentPersonalInfo.phoneNumber}</td>
+                <td>${student.studentPersonalInfo.email}</td>
                 <td>${student.faculty.facultyName}</td>
                 <td>
                     <input type="button" value="Add teachers" onclick="window.location.href = '${addTeacherToStudentButton}'">

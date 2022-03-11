@@ -30,7 +30,7 @@ public class LoggingTeacherAspect {
         Object[] objects = proceedingJoinPoint.getArgs();
         Teacher teacher = (Teacher) objects[0];
         int facultyId = (int) objects[1];
-        logger.info("Teacher " + teacher.getName() + " with salary " + teacher.getSalary() + " " +
+        logger.info("Teacher " + teacher.getTeacherPersonalInfo().getName() + " with salary " + teacher.getTeacherPersonalInfo().getSalary() + " " +
                 "was successfully added on faculty with id " + facultyId + "\n// Method " + methodName + " is finished");
         return result;
     }

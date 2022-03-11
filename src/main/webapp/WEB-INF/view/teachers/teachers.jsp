@@ -40,11 +40,11 @@
             </c:url>
 
             <tr>
-                <td>${teacher.name}</td>
+                <td>${teacher.teacherPersonalInfo.name}</td>
                 <td>${teacher.faculty.facultyName}</td>
                 <td>${teacher.subject}</td>
-                <td>${teacher.salary}</td>
-                <td>${teacher.phoneNumber}</td>
+                <td>${teacher.teacherPersonalInfo.salary}</td>
+                <td>${teacher.teacherPersonalInfo.phoneNumber}</td>
                 <td>
                     <input type="button" value="Add student" onclick="window.location.href = '${addStudentButton}'">
                     <input type="button" value="Student list" onclick="window.location.href = '${getAllStudentsOfTeacherButton}'">

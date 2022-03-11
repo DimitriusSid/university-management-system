@@ -1,13 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 1/26/2022
-  Time: 2:39 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,20 +10,19 @@
 
         <form:hidden path="id"/>
         <p>
-            Name <form:input path="name"/>
-            <form:errors cssClass="errors" path="name"/>
+            Name <form:input path="teacherPersonalInfo.name"/>
+            <form:errors path="teacherPersonalInfo.name"/>
         </p>
         <p>
             Subject <form:input path="subject"/>
             <form:errors path="subject"/>
         </p>
-        <p>
-            Salary <form:input path="salary"/>
-            <form:errors path="salary"/>
+            Salary <form:input path="teacherPersonalInfo.salary"/>
+            <form:errors path="teacherPersonalInfo.salary"/>
         </p>
         <p>
-            Phone number <form:input path="phoneNumber"/>
-            <form:errors path="phoneNumber"/>
+            Phone number <form:input path="teacherPersonalInfo.phoneNumber"/>
+            <form:errors path="teacherPersonalInfo.phoneNumber"/>
         </p>
 
         <label for="select">Faculty</label>

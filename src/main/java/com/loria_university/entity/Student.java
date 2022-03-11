@@ -8,6 +8,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,6 @@ public class Student {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    @NotBlank(message = "This field could not be empty")
-    @Size(min = 2, message = "Name must contain min 2 symbols")
-    private String name;
-
     @Column(name = "course")
     @Min(value = 1, message = "Course value must be between 1 and 5")
     @Max(value = 5, message = "Course value must be between 1 and 5")
@@ -38,13 +34,9 @@ public class Student {
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
-    @Column(name = "phone_number")
-    @Pattern(regexp = "\\+\\d{3}-\\d{2}-\\d{3}-\\d{2}-\\d{2}", message = "Phone number must look like: +XXX-XX-XXX-XX-XX")
-    private String phoneNumber;
-
-    @Column(name = "email")
-    @CheckEmail
-    private String email;
+    @Embedded
+    @Valid
+    private StudentPersonalInfo studentPersonalInfo;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @LazyCollection(LazyCollectionOption.FALSE)
